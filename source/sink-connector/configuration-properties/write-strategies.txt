@@ -17,15 +17,30 @@ Overview
 
 .. _sink-configuration-write-model-strategy-description-start:
 
-Use the strategies in the following table to specify how the {+sink-connector+}
-writes data into MongoDB. You can specify a write strategy with the following
-configuration:
+A write model strategy determines how the {+sink-connector+} stores data 
+in MongoDB.
+
+The ``writemodel.strategy`` configuration property specifies how the {+sink-connector+}
+*writes data into MongoDB.* You can set this property by using the following syntax:
 
 .. code-block:: properties
 
-   writemodel.strategy=<a writemodel strategy>
+   writemodel.strategy=<write model strategy>
+
+The ``delete.writemodel.strategy`` configuration property specifies how the
+{+sink-connector+} *deletes data from MongoDB.* You can set this property by using
+the following syntax:
+
+.. code-block:: properties
+
+   delete.writemodel.strategy=<write model strategy>
 
 .. _sink-configuration-write-model-strategy-description-end:
+
+.. note::
+
+   You can use different values for ``writemodel.strategy`` and
+   ``delete.writemodel.strategy``.
 
 .. include:: /includes/sink-config-link.rst
 
@@ -33,6 +48,9 @@ configuration:
 
 Strategies
 ----------
+
+The following table describes the accepted values for the ``writemodel.strategy``
+and ``delete.writemodel.strategy`` properties:
 
 .. _sink-configuration-write-model-strategy-table-start:
 
