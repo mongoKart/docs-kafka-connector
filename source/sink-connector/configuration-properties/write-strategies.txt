@@ -20,31 +20,12 @@ Overview
 A write model strategy determines how the {+sink-connector+} stores data 
 in MongoDB.
 
-The ``writemodel.strategy`` configuration property specifies how the {+sink-connector+}
+The ``writemodel.strategy`` configuration property specifies how the sink connector
 *writes data into MongoDB.* You can set this property by using the following syntax:
 
 .. code-block:: properties
 
    writemodel.strategy=<write model strategy>
-
-The ``delete.writemodel.strategy`` configuration property specifies how the
-{+sink-connector+} *deletes data from MongoDB.* You can set this property by using
-the following syntax:
-
-.. code-block:: properties
-
-   delete.writemodel.strategy=<write model strategy>
-
-.. _sink-configuration-write-model-strategy-description-end:
-
-.. note::
-
-   You can use different values for ``writemodel.strategy`` and
-   ``delete.writemodel.strategy``.
-
-.. include:: /includes/sink-config-link.rst
-
-.. _sink-connector-write-model-strategies:
 
 Strategies
 ----------
@@ -111,6 +92,11 @@ and ``delete.writemodel.strategy`` properties:
 
           writemodel.strategy=com.mongodb.kafka.connect.sink.writemodel.strategy.DeleteOneDefaultStrategy
 
+       .. important:: 
+
+          The DeleteOneDefaultStrategy works only when the ID strategy is 
+          FullKeyStrategy, PartialKeyStrategy, or ProvidedInKeyStrategy.
+
    * - | **DeleteOneBusinessKeyStrategy**
        | 
      - | **Description:**
@@ -146,3 +132,26 @@ and ``delete.writemodel.strategy`` properties:
           writemodel.strategy=com.mongodb.kafka.connect.sink.writemodel.strategy.UpdateOneBusinessKeyTimestampStrategy
 
 .. _sink-configuration-write-model-strategy-table-end:
+
+Deleting Data
+-------------
+
+You can also specify a delete model strategy, which specifies how the
+sink connector *deletes data from MongoDB.* You can set this property by using
+the f llowing syntax:The ``delete.writemodel.strategy`` configuration property
+
+.. code-block:: properties
+
+   delete.writemodel.strategy=<write model strategy>
+
+.. _sink-configuration-write-model-strategy-description-end:
+
+.. note::
+
+   You can use different values for ``writemodel.strategy`` and
+   ``delete.writemodel.strategy``.
+
+.. include:: /includes/sink-config-link.rst
+
+.. _sink-connector-write-model-strategies:
+
